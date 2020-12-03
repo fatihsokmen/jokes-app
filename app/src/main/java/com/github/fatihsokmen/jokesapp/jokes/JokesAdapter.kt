@@ -6,38 +6,38 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.fatihsokmen.jokesapp.data.JokeModel
 import com.github.fatihsokmen.jokesapp.databinding.ViewJokeBinding
 
-class JokesAdapter : RecyclerView.Adapter<JokesAdapter.CharacterViewHolder>() {
+class JokesAdapter : RecyclerView.Adapter<JokesAdapter.JokeViewHolder>() {
 
     private val data = arrayListOf<JokeModel>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
         val binding = ViewJokeBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return CharacterViewHolder(binding)
+        return JokeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
         holder.bind(data[position])
     }
 
     override fun getItemCount(): Int =
         data.size
 
-    fun setData(characters: List<JokeModel>) {
+    fun setData(jokes: List<JokeModel>) {
         data.clear()
-        data.addAll(characters)
+        data.addAll(jokes)
         notifyDataSetChanged()
     }
 
-    class CharacterViewHolder(
+    class JokeViewHolder(
         private val binding: ViewJokeBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(character: JokeModel) {
-            binding.model = character
+        fun bind(joke: JokeModel) {
+            binding.model = joke
             binding.executePendingBindings()
         }
     }
