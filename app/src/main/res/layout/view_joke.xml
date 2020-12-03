@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.text.HtmlCompat" />
+
+        <variable
+            name="model"
+            type="com.github.fatihsokmen.jokesapp.data.JokeModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            visibleWhen="@{model.showCategories}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{model.categories}"
+            android:textColor="@color/teal_700"
+            tools:text="#nerdy" />
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            html="@{model.joke}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Joke text" />
+    </LinearLayout>
+
+</layout>
